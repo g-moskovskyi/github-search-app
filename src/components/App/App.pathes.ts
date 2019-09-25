@@ -1,6 +1,6 @@
 export enum PATHES {
     HOME = '/',
-    SIGN_IN = '/sign_in',
+    ABOUT = '/about',
     AUTH = '/auth',
     NOT_FOUND = '/404',
     REDIRECT = '/*'

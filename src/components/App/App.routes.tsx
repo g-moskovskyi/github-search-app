@@ -1,29 +1,40 @@
 import { PATHES } from './App.pathes';
-import { Redirect, RouteComponentProps } from 'react-router';
-import { Home } from '../Home';
 import * as React from 'react';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { Home } from '../Home';
+import { About } from '../About';
+import { Auth } from '../Auth';
+
+
 
 
 export interface AppRoute {
+	isProtected?: boolean;
 	path: PATHES;
 	render: (params: RouteComponentProps) => any;
-	exact?: boolean;
-	isProtected?: boolean;
 }
 
 export default [
+
 	{
-		path: PATHES.HOME,
-		render: (props: RouteComponentProps) => <Home {...props} />,
-		exact: true,
-		isProtected: true,
+		path: PATHES.ABOUT,
+		render: (props: RouteComponentProps) => <About {...props} />,
+	},
+	{
+		path: PATHES.AUTH,
+		render: (props: RouteComponentProps) => <Auth {...props} />
 	},
 	{
 		path: PATHES.NOT_FOUND,
-		render: () => <h2>Not found!</h2>
+		render: () => <h2>Not found!</h2>,
+	},
+	{
+		path: PATHES.HOME,
+		render: (props: RouteComponentProps) => <Home {...props} />,
+		isProtected: true,
 	},
 	{
 		path: PATHES.REDIRECT,
 		render: () => <Redirect to={'/404'} />
-	}
+	},
 ];

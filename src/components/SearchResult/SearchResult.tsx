@@ -2,7 +2,7 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Page } from '../Page';
 
-class About extends React.PureComponent<RouteComponentProps>{
+class SearchResult extends React.PureComponent<RouteComponentProps>{
     public render() {
         return (
             <Page title={'ABOUT'}>
@@ -16,4 +16,4 @@ class About extends React.PureComponent<RouteComponentProps>{
 
 
 
-export { About };
+export { SearchResult };

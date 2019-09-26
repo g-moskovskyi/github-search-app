@@ -1,5 +1,5 @@
 import { ACTION_TYPES } from './constants';
-import { UserRepository } from '../../models/UserRepositories';
+import { UserRepository } from '../../models/UserRepository';
 
 export const fetchUserRepositories = () => ({
   type: ACTION_TYPES.FETCH_REPOSITORIES,

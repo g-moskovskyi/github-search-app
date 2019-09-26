@@ -1,16 +1,16 @@
-import { UserRepository } from '../../models/UserRepository';
 import { Action } from '../types';
 import { ACTION_TYPES } from './constants';
+import { SearchedRepository } from '../../models/SearchedRepository';
 
-export interface UserRepositoriesState {
-  items: Array<UserRepository> | undefined;
+export interface SearchedRepositoriesState {
+  items: Array<SearchedRepository> | undefined;
 }
 
 export const INITIAL_STATE = {
   items: undefined,
 };
 
-export default (state: UserRepositoriesState = INITIAL_STATE, action: Action<Array<UserRepository>>) => {
+export default (state: SearchedRepositoriesState = INITIAL_STATE, action: Action<Array<SearchedRepository>>) => {
   switch (action.type) {
     case ACTION_TYPES.SET_REPOSITORIES:
       return {

@@ -37,14 +37,7 @@ class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & With
                             <Button variant="contained" color="primary" href='/'>
                                 HOME
                         </Button>
-
-                            <Button variant="contained" color="primary" href='/about'>
-                                ABOUT
-                        </Button>
-
-
                             {this.renderAuthControls()}
-
                         </Typography>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>

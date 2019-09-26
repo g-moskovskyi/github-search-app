@@ -107,7 +107,7 @@ export interface Item {
     permissions: Permissions;
     score: number;
 }
-export interface SearchedRepositories {
+export interface SearchedRepository {
     total_count: number;
     incomplete_results: boolean;
     items: Item[];

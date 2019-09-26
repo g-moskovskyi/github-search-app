@@ -2,7 +2,7 @@ import { PATHES } from './App.pathes';
 import * as React from 'react';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { Home } from '../Home';
-import { About } from '../About';
+import { SearchResult } from '../SearchResult';
 import { Auth } from '../Auth';
 
 
@@ -17,8 +17,8 @@ export interface AppRoute {
 export default [
 
 	{
-		path: PATHES.ABOUT,
-		render: (props: RouteComponentProps) => <About {...props} />,
+		path: PATHES.SEARCH_RESULT,
+		render: (props: RouteComponentProps) => <SearchResult {...props} />,
 	},
 	{
 		path: PATHES.AUTH,

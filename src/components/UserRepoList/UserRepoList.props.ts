@@ -1,4 +1,4 @@
-import { UserRepository } from '../../models/UserRepositories';
+import { UserRepository } from '../../models/UserRepository';
 
 export interface HomeProps {
 }

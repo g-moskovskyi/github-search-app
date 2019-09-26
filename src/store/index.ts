@@ -5,6 +5,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import auth, { authMiddlewares, AuthState } from './auth';
 import userRepositories, { UserRepositoriesState, userRepoMiddlewares } from './userRepositories';
+import searchedRepositories, { searchedRepoMiddlewares } from './searchedRepositories';
 
 export interface AppState {
     auth: AuthState;
@@ -15,7 +16,8 @@ const rootReducer = (history: History) => combineReducers(
     {
         router: connectRouter(history),
         auth,
-        userRepositories
+        userRepositories,
+        searchedRepositories
     }
 );
 
@@ -30,7 +32,8 @@ export default (history: History) => {
                 routerMiddleware(history),
                 // @ts-ignoret
                 ...authMiddlewares,
-                ...userRepoMiddlewares
+                ...userRepoMiddlewares,
+                ...searchedRepoMiddlewares
             )
         )
     )

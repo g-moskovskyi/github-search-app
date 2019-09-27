@@ -1,6 +1,8 @@
 import React from 'react';
+import { push } from 'connected-react-router';
+import { PATHES } from '../../components/App/App.pathes';
 
-import styles from './SearchAppBar.styles';
+import styles from './Header.styles';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,7 +28,7 @@ const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 const scope = process.env.REACT_APP_SCOPE;
 
 
-class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & WithStyles<typeof styles>> {
+class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles<typeof styles>> {
     public render() {
         const { classes } = this.props;
         return (
@@ -34,7 +36,11 @@ class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & With
                 <AppBar position="static">
                     <Toolbar>
                         <Typography className={classes.title} variant="h2" noWrap>
-                            <Button variant="contained" color="primary" href='/'>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={(): void => { push(PATHES.HOME) }}
+                            >
                                 HOME
                         </Button>
                             {this.renderAuthControls()}
@@ -55,7 +61,7 @@ class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & With
                         </div>
                     </Toolbar>
                 </AppBar>
-            </div>
+            </div >
         )
     }
 
@@ -83,7 +89,7 @@ class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & With
     };
 }
 
-const WrappedSearchAppBar: any = withStyles<any>(styles)(SearchAppBar);
+const WrappedSearchAppBar: any = withStyles<any>(styles)(Header);
 
 const mapStateToProps: any = (state: AppState): StateProps => {
     return {
@@ -100,7 +106,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): DispatchProps => {
 
 const ConnectedComponent = connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(WrappedSearchAppBar);
 
-export { ConnectedComponent as SearchAppBar };
+export { ConnectedComponent as Header };
 
 
 

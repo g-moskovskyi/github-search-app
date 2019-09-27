@@ -13,31 +13,20 @@ interface StateProps {
 class Home extends React.PureComponent<StateProps & RouteComponentProps>{
 
     public render() {
-        if (this.props.isSignedIn) {
-            return (
-                <Page title={'HOME'} >
-                    <div >
-                        <UserRepoList />
-                    </div>
-                </Page>
-            )
+        const homepageContent = () => {
+            if (this.props.isSignedIn) {
+                return (<UserRepoList />)
+            }
+            return (<h2>Please sigh in</h2>)
         }
-        else {
-            return (
-                <Page title={'HOME'} >
-                    <div >
-                        <h2>Please sigh in</h2>
-                    </div>
-                </Page>
-            )
-        }
+        return (<Page title={'HOME'} >
+            {homepageContent()}
+        </Page>)
     }
 }
-
 const mapStateToProps = (state: AppState) => {
     return {
         isSignedIn: getIsSignedIn(state),
-        // @ts-ignore
     };
 };
 

@@ -25,7 +25,7 @@ class UserRepoList extends React.PureComponent<StateProps & DispatchProps> {
         return (
             items.map((item: Repository) => (
                 <div key={item.id}>
-                    <ListItem alignItems="flex-start">
+                    <ListItem alignItems='center'>
                         <ListItemAvatar>
                             <Avatar >
                                 <Folder />
@@ -48,7 +48,7 @@ class UserRepoList extends React.PureComponent<StateProps & DispatchProps> {
         return (
             <>
                 <h2>User repositories:</h2>
-                <Grid container spacing={2}>
+                <Grid container spacing={0}>
                     <List>
                         <>
                             {this.ListItem()}

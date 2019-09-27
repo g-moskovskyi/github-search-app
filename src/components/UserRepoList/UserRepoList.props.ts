@@ -1,12 +1,12 @@
-import { UserRepository } from '../../models/UserRepository';
+import { Repository } from '../../models/Repository';
 
 export interface HomeProps {
 }
 
 export interface StateProps {
-	userRepositories: Array<UserRepository>;
+	userRepos: Array<Repository>;
 }
 
 export interface DispatchProps {
-	onFetchUserRepositories: () => void
+	onFetchUserRepos: () => void
 }

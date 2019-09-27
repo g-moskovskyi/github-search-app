@@ -1,29 +1,29 @@
 import React from 'react';
 import { AppState } from '../../store';
 import { StateProps, DispatchProps } from './UserRepoList.props';
-import { getUserRepositories } from '../../store/userRepositories/selectors';
+import { getUserRepos } from '../../store/userRepos/selectors';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { fetchUserRepositories } from '../../store/userRepositories';
+import { fetchUserRepos } from '../../store/userRepos';
 
 import { List, ListItem, Divider, Link, ListItemAvatar, Avatar, Grid } from '@material-ui/core';
 import { Folder } from '@material-ui/icons/';
 
-import { UserRepository } from '../../models/UserRepository';
+import { Repository } from '../../models/Repository';
 
 
 class UserRepoList extends React.PureComponent<StateProps & DispatchProps> {
     public componentDidMount(): void {
-        this.props.onFetchUserRepositories();
+        this.props.onFetchUserRepos();
     }
 
     ListItem() {
-        const { items }: any = this.props.userRepositories;
+        const { items }: any = this.props.userRepos;
         if (!items) return (
             <h2>Loading...</h2>
         );
         return (
-            items.map((item: UserRepository) => (
+            items.map((item: Repository) => (
                 <div key={item.id}>
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
@@ -62,12 +62,12 @@ class UserRepoList extends React.PureComponent<StateProps & DispatchProps> {
 
 const mapStateToProps = (state: AppState): StateProps => {
     return {
-        userRepositories: getUserRepositories(state)
+        userRepos: getUserRepos(state)
     };
 };
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => ({
-    onFetchUserRepositories: () => dispatch(fetchUserRepositories()),
+    onFetchUserRepos: () => dispatch(fetchUserRepos()),
 });
 
 const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(UserRepoList);

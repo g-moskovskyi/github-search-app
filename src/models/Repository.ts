@@ -33,7 +33,7 @@ export interface Permissions {
     pull: boolean;
 }
 
-export interface UserRepository {
+export interface Repository {
     id: number;
     node_id: string;
     name: string;

@@ -15,7 +15,6 @@ const fetchToken = async (code: string) => {
 	try {
 		const AUTH_URL = `https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token?client_id=${key}&client_secret=${secret}&redirect_uri=${redirectUrl}&code=${code}`;
 		const response = await axios.post<Token>(AUTH_URL, undefined, { headers: { 'Accept': 'application/json' } });
-		console.log('response', response);
 		return response.data;
 	} catch (e) {
 		throw e;

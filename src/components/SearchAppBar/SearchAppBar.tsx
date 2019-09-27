@@ -49,6 +49,7 @@ class SearchAppBar extends React.PureComponent<StateProps & DispatchProps & With
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
+                                // onSubmit
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </div>

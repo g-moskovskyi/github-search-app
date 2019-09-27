@@ -4,20 +4,20 @@ import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import auth, { authMiddlewares, AuthState } from './auth';
-import userRepositories, { UserRepositoriesState, userRepoMiddlewares } from './userRepositories';
-import searchedRepositories, { searchedRepoMiddlewares } from './searchedRepositories';
+import userRepos, { UserReposState, userRepoMiddlewares } from './userRepos';
+import searchedRepos, { searchedRepoMiddlewares } from './searchedRepos';
 
 export interface AppState {
     auth: AuthState;
-    userRepositories: UserRepositoriesState
+    userRepositories: UserReposState
 }
 
 const rootReducer = (history: History) => combineReducers(
     {
         router: connectRouter(history),
         auth,
-        userRepositories,
-        searchedRepositories
+        userRepos,
+        searchedRepos
     }
 );
 

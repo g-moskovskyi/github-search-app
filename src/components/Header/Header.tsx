@@ -10,18 +10,15 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button, Typography } from '@material-ui/core';
 
-import { Action, Dispatch } from 'redux';
+import { Action, Dispatch, Store } from 'redux';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { signOut } from '../../store/auth';
+import { SearchParams } from '../../models/SearchParams';
+import { setSearchParams, clearSearchParams } from '../../store/searchParams';
+import { StateProps, DispatchProps } from './Header.props';
 
-interface StateProps {
-    isSignedIn: boolean;
-}
 
-interface DispatchProps {
-    onSignOut: () => void;
-}
 
 const key = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
@@ -39,9 +36,17 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
                             <Button
                                 variant="contained"
                                 color="primary"
-                                onClick={(): void => { push(PATHES.HOME) }}
+                                onClick={this.props.onHomeRedirect}
                             >
                                 HOME
+                        </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                // onClick={(): void => { this.props.onSetSearchParams({ 'q': 'adaasdsd' }) }}
+                                onClick={this.props.onSearchRedirect}
+                            >
+                                prapa
                         </Button>
                             {this.renderAuthControls()}
                         </Typography>
@@ -55,7 +60,15 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
-                                // onSubmit
+                                onKeyUp={(e) => {
+                                    if (e.keyCode === 13) {
+                                        console.log('Input done');
+                                        push(PATHES.SEARCH_RESULT);
+
+                                    }
+                                }}
+
+                                // onChange={(e) => { this.props.onSetSearchParams({ 'q': e.currentTarget.value }) }}
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </div>
@@ -89,20 +102,25 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
     };
 }
 
-const WrappedSearchAppBar: any = withStyles<any>(styles)(Header);
+
 
 const mapStateToProps: any = (state: AppState): StateProps => {
     return {
         isSignedIn: !!state.auth.token,
-
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): DispatchProps => {
     return {
         onSignOut: () => dispatch(signOut()),
+        onSetSearchParams: (params: SearchParams) => dispatch(setSearchParams(params)),
+        onClearSearchParams: () => dispatch(clearSearchParams()),
+        onSearchRedirect: () => dispatch(push(PATHES.SEARCH_RESULT)),
+        onHomeRedirect: () => dispatch(push(PATHES.HOME))
     };
 };
+
+const WrappedSearchAppBar: any = withStyles<any>(styles)(Header);
 
 const ConnectedComponent = connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(WrappedSearchAppBar);
 

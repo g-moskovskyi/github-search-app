@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Action } from '../types';
 import { ACTION_TYPES } from './constants';
 import { Token } from '../../models/Token';
-import { setToken } from './actions';
+import { setToken, clearToken } from './actions';
 import { PATHES } from '../../components/App/App.pathes';
 
 const key = process.env.REACT_APP_CLIENT_ID;
@@ -35,7 +35,7 @@ const fetchMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>) =>
 
 const signOutMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>) => void) => (action: Action<any>) => {
 	if (action.type === ACTION_TYPES.SIGN_OUT) {
-		dispatch(setToken(undefined));
+		dispatch(clearToken());
 		dispatch(push(PATHES.HOME));
 	}
 

@@ -6,7 +6,7 @@ export const fetchToken = (code: string) => ({
   payload: code,
 });
 
-export const setToken = (token: Token | undefined) => ({
+export const setToken = (token: Token) => ({
   type: ACTION_TYPES.SET_TOKEN,
   payload: token,
 });
@@ -15,4 +15,7 @@ export const signOut = () => ({
   type: ACTION_TYPES.SIGN_OUT
 });
 
+export const clearToken = () => ({
+  type: ACTION_TYPES.CLEAR_TOKEN
+});
 

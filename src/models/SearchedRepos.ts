@@ -1,6 +1,6 @@
 import { Repository } from "./Repository";
 
-export interface SearchedRepo {
+export interface SearchedRepos {
     total_count: number;
     incomplete_results: boolean;
     items: Repository[];

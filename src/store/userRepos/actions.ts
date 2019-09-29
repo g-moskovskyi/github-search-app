@@ -10,4 +10,8 @@ export const setUserRepos = (items: Array<Repository> | undefined) => ({
   payload: items,
 });
 
+export const clearUserRepos = () => ({
+  type: ACTION_TYPES.CLEAR_REPOS
+});
+
 

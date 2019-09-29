@@ -15,7 +15,6 @@ export interface AppRoute {
 }
 
 export default [
-
 	{
 		path: PATHES.SEARCH_RESULT,
 		render: (props: RouteComponentProps) => <SearchResult {...props} />,
@@ -28,11 +27,13 @@ export default [
 		path: PATHES.NOT_FOUND,
 		render: () => <h2>Not found!</h2>,
 	},
+
 	{
 		path: PATHES.HOME,
 		render: (props: RouteComponentProps) => <Home {...props} />,
 		isProtected: true,
 	},
+
 	{
 		path: PATHES.REDIRECT,
 		render: () => <Redirect to={'/404'} />

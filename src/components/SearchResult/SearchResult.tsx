@@ -18,8 +18,8 @@ class SearchResult extends React.PureComponent<StateProps & DispatchProps & Rout
                 return (<SearchResultList />)
             }
             else {
-                { this.props.onHomeRedirect() };
-                return null
+                this.props.onHomeRedirect();
+                return (null)
             }
 
         }

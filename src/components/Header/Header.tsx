@@ -10,7 +10,7 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button, Typography } from '@material-ui/core';
 
-import { Action, Dispatch, Store } from 'redux';
+import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { signOut } from '../../store/auth';

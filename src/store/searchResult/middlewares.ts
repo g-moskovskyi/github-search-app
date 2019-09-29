@@ -19,9 +19,10 @@ const fetchSearchResult = async (action: Action<undefined>, next: any, dispatch:
 	next(action);
 };
 
+
 const fetchMiddleware = ({ dispatch, getState }: any) => (next: (action: Action<any>) => void) => subscribe(
 	ACTION_TYPES.FETCH_RESULT,
-	fetchSearchResult
+	fetchSearchResult,
 )(next, dispatch, getState);
 
 

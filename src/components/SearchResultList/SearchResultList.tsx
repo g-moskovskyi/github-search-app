@@ -6,8 +6,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Repository } from '../../models/Repository';
 import { fetchSearchResult } from '../../store/searchResult';
 
-import { List, ListItem, Divider, Link, ListItemAvatar, Grid, IconButton } from '@material-ui/core';
-import { StarBorder } from '@material-ui/icons/';
+import { List, ListItem, Divider, ListItemAvatar, Grid, Avatar, ListItemText } from '@material-ui/core';
+import { Folder } from '@material-ui/icons/';
 import styles from './SearchResultList.styles'
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { getSearchResult } from '../../store/searchResult/selectors';
@@ -30,17 +30,15 @@ class SearchResultList extends React.PureComponent<StateProps & DispatchProps & 
         return (
             result.items.map((item: Repository) => (
                 <div key={item.id}>
-                    <ListItem button alignItems='center'>
-                        <ListItemAvatar >
-                            <IconButton className={classes.yellowAvatar} aria-label={`star`} >
-                                < StarBorder />
-                            </IconButton>
+                    <ListItem className={classes.item} button alignItems='center' onClick={() => {
+                        window.open(item.html_url, '_blank');
+                    }}>
+                        <ListItemAvatar  >
+                            <Avatar className={classes.yellowAvatar} >
+                                <Folder />
+                            </Avatar>
                         </ListItemAvatar>
-                        <Link
-                            onClick={() => {
-                                window.open(item.html_url, '_blank');
-                            }}>
-                            {item.name}</Link>
+                        <ListItemText primary={item.name} />
                     </ListItem>
                     <Divider variant="inset" component="li" />
                 </div>

@@ -7,8 +7,8 @@ import { PATHES } from '../../components/App/App.pathes';
 import { SearchParams } from '../../models/SearchParams';
 
 
-const setParamsMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>) => void) => (action: Action<any>) => {
-	if (action.type === ACTION_TYPES.SET_PARAMS) {
+const startSearchMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>) => void) => (action: Action<any>) => {
+	if (action.type === ACTION_TYPES.START_SEARCH) {
 		const params: SearchParams = action.payload;
 		console.log('params', params);
 		dispatch(push(PATHES.SEARCH_RESULT));
@@ -17,13 +17,4 @@ const setParamsMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>
 	next(action);
 };
 
-const clearParamsMiddleware = ({ dispatch }: Store) => (next: (action: Action<any>) => void) => (action: Action<any>) => {
-	if (action.type === ACTION_TYPES.CLEAR_PARAMS) {
-		dispatch(push(PATHES.HOME));
-		dispatch(clearSearchParams());
-	}
-	next(action);
-};
-
-
-export const searchParamsMiddlewares = [setParamsMiddleware, clearParamsMiddleware];
+export const searchParamsMiddlewares = [startSearchMiddleware];

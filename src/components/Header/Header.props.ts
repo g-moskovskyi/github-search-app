@@ -6,7 +6,7 @@ export interface StateProps {
 
 export interface DispatchProps {
     onSignOut: () => void;
-    onSetSearchParams: (params: SearchParams) => void;
+    onStartSearch: (params: SearchParams) => void;
     onClearSearchParams: () => void;
     onSearchRedirect: () => void;
     onHomeRedirect: () => void;

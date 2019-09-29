@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { signOut } from '../../store/auth';
 import { SearchParams } from '../../models/SearchParams';
-import { setSearchParams, clearSearchParams } from '../../store/searchParams';
+import { startSearch, clearSearchParams } from '../../store/searchParams';
 import { StateProps, DispatchProps } from './Header.props';
 
 
@@ -62,7 +62,7 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
                                 }}
                                 onKeyUp={(e) => {
                                     if (e.keyCode === 13) {
-                                        this.props.onSetSearchParams({ 'q': e.currentTarget.value })
+                                        this.props.onStartSearch({ 'q': e.currentTarget.value })
                                     }
                                 }}
 
@@ -111,7 +111,7 @@ const mapStateToProps: any = (state: AppState): StateProps => {
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): DispatchProps => {
     return {
         onSignOut: () => dispatch(signOut()),
-        onSetSearchParams: (params: SearchParams) => dispatch(setSearchParams(params)),
+        onStartSearch: (params: SearchParams) => dispatch(startSearch(params)),
         onClearSearchParams: () => dispatch(clearSearchParams()),
         onSearchRedirect: () => dispatch(push(PATHES.SEARCH_RESULT)),
         onHomeRedirect: () => dispatch(push(PATHES.HOME))

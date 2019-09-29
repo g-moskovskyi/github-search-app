@@ -6,6 +6,11 @@ export const setSearchParams = (params: SearchParams | undefined) => ({
   payload: params,
 });
 
+export const startSearch = (params: SearchParams | undefined) => ({
+  type: ACTION_TYPES.START_SEARCH,
+  payload: params,
+});
+
 export const clearSearchParams = () => ({
   type: ACTION_TYPES.CLEAR_PARAMS
 });

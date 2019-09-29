@@ -20,7 +20,7 @@ class SearchResultList extends React.PureComponent<StateProps & DispatchProps & 
     }
     TotalCount() {
         const result = this.props.searchResult.searchedRepos;
-        if (!result) return null;
+        if (!result) return ('loading...');
         return this.props.searchResult.searchedRepos.total_count;
     }
 

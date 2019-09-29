@@ -12,5 +12,8 @@ export default (theme: Theme) =>
             margin: 10,
             color: '#fff',
             backgroundColor: yellow[500],
+        },
+        item: {
+            height: 50,
         }
     });

@@ -18,12 +18,15 @@ class SearchResultList extends React.PureComponent<StateProps & DispatchProps & 
     public componentDidMount(): void {
         this.props.onFetchSearchResult();
     }
+    TotalCount() {
+        const result = this.props.searchResult.searchedRepos;
+        if (!result) return null;
+        return this.props.searchResult.searchedRepos.total_count;
+    }
 
     ListItem() {
         const { classes } = this.props;
-        console.log('classes', classes);
         const result = this.props.searchResult.searchedRepos;
-        console.log('result', result);
         if (!result) return (
             <h2>Loading...</h2>
         );
@@ -48,10 +51,9 @@ class SearchResultList extends React.PureComponent<StateProps & DispatchProps & 
     }
 
     public render() {
-        console.log('searchResult.total_count', this.props.searchResult.searchedRepos)
         return (
             <>
-                <h2>Searched repositories:</h2>
+                <h2>Searched repositories ({this.TotalCount()}):</h2>
                 <Grid container spacing={0}>
                     <List>
                         <>

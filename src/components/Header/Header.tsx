@@ -46,7 +46,7 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
                                 // onClick={(): void => { this.props.onSetSearchParams({ 'q': 'adaasdsd' }) }}
                                 onClick={this.props.onSearchRedirect}
                             >
-                                prapa
+                                SEARCH TEST
                         </Button>
                             {this.renderAuthControls()}
                         </Typography>
@@ -62,9 +62,7 @@ class Header extends React.PureComponent<StateProps & DispatchProps & WithStyles
                                 }}
                                 onKeyUp={(e) => {
                                     if (e.keyCode === 13) {
-                                        console.log('Input done');
-                                        push(PATHES.SEARCH_RESULT);
-
+                                        this.props.onSetSearchParams({ 'q': e.currentTarget.value })
                                     }
                                 }}
 
